@@ -18,13 +18,6 @@ int wmain(int argc, wchar_t** argv) {
 	}
 
 
-	DWORD base;
-	
-
-	
-
-
-
 	DWORD pid = getPID(argv[1]);
 
 
@@ -96,9 +89,14 @@ int wmain(int argc, wchar_t** argv) {
 
 	);
 
+	
+
 
 	WaitForSingleObject(thread, INFINITE);
+	
 
+	DWORD base;
+	
 	GetExitCodeThread(thread, &base);
 
 
