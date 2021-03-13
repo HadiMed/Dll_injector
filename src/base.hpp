@@ -1,3 +1,5 @@
+// Retrive base adress of an executable using CreateRemoteThread to bypass ASLR 
+
 #include <iostream>
 #include <stdio.h>
 #include <windows.h>
