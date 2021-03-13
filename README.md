@@ -1,5 +1,6 @@
 # Dll_injector
-simple tool that uses Windows APIs to trick a process to load dll to memory 
+
+simple tool that uses Windows APIs to trick a process to load a dll to its memory. 
 
 
 
@@ -21,4 +22,4 @@ first it search for the pid of the process given in arguments and it open a hand
 this works because kernel32 would have the same base address in all process and the same offsets for all the functions , so loadlibrary will have the same address in our process (Inject.exe) and in the process we want to inject to . 
 
 # Usage : 
-  <font size="+5"> <b> Inject.exe process_name Fullpathofdll.dll </b> </font>
+  <b> Inject.exe process_name Fullpathofdll.dll </b>
