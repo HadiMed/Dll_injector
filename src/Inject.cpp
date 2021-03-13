@@ -19,7 +19,7 @@ int wmain(int argc, wchar_t** argv) {
 
 
 	DWORD base;
-	// get base adress of kernel32.dll then loadlibraryA 
+	
 
 	
 
@@ -78,7 +78,9 @@ int wmain(int argc, wchar_t** argv) {
 		path_len,
 		NULL
 	);
-
+	
+	// get base adress of kernel32.dll then loadlibraryA 
+	
 	HMODULE k32 = GetModuleHandleA("kernel32.dll");
 
 	LPVOID handl_loadlibrary = GetProcAddress(k32, "LoadLibraryW");
