@@ -5,17 +5,25 @@
 #include <tlhelp32.h>
 #include "base.hpp"
 
-// main functionality for DLL injector implemented here 
+
 
 
 int wmain(int argc, wchar_t** argv) {
 
+	
 
 	if (argc != 3) {
-		printf("usage : Inject.exe process_name dllfile.dll");
+		printf("\nusage : Inject.exe process_name dllfile.dll\n");
 		exit(1);
 
 	}
+
+
+	DWORD base;
+	// get base adress of kernel32.dll then loadlibraryA 
+
+	
+
 
 
 	DWORD pid = getPID(argv[1]);
@@ -25,8 +33,8 @@ int wmain(int argc, wchar_t** argv) {
 		printf("error retrieving process id \n");
 		exit(1);
 	}
-
-
+	printf("************************************************\n");
+	printf("************************************************\n");
 	printf("\n[*] Process id : %d\n", pid);
 
 
@@ -64,44 +72,42 @@ int wmain(int argc, wchar_t** argv) {
 		exit(1);
 	}
 
-	WriteProcessMemory( // write to process memory the DLL path 
+	WriteProcessMemory(
 		process,
 		memory,
 		argv[2],
 		path_len,
 		NULL
 	);
-	
-	// get base adress of kernel32.dll then loadlibraryA 
-	
+
 	HMODULE k32 = GetModuleHandleA("kernel32.dll");
 
-	LPVOID handl_loadlibrary = GetProcAddress(k32, "LoadLibraryW");
+	LPVOID pointr_loadlibrary = GetProcAddress(k32, "LoadLibraryW");
 
 	HANDLE thread = CreateRemoteThread( // Create the remote thread
 		process,
 		NULL,
 		NULL,
-		(LPTHREAD_START_ROUTINE)handl_loadlibrary,
+		(LPTHREAD_START_ROUTINE)pointr_loadlibrary,
 		memory,
 		NULL,
 		NULL
 
 	);
 
-	
-
 
 	WaitForSingleObject(thread, INFINITE);
-	
 
-	DWORD base;
-	
 	GetExitCodeThread(thread, &base);
 
 
 	CloseHandle(thread);
 
+	if (base == 0) {
+		printf("[X] Injection didnt work "); 
+		exit(1); 
+	}
+	
 	printf("[*] Dll injected succesfully !  Loaded at  base address  : 0x%x\n", base);
 
 }
