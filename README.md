@@ -1,6 +1,6 @@
 # Dll_injector
 
-<sub>simple tool that uses Windows APIs to trick a process to load a dll to its memory. </sub>
+simple tool that uses Windows APIs to trick a process to load a dll to its memory. 
 
 
 
