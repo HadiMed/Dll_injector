@@ -8,11 +8,11 @@ simple tool that uses Windows APIs to trick a process to load a dll to its memor
 
 
 
-<b> OpenProcess </b> : get a handle for a process in memory knowing its PID . </br>
-<b> VirtualAllocEx</b> : Allocate memory in a process knowing its handle . </br>
-<b> WriteProcessMemory </b> : Write to a memory in a process knowing its handle . </br> 
-<b> LoadLibraryW</b> : load dll into a process (This is the function that our process need to execute ) . </br> 
-<b> CreateRemoteThread</b> : Create thread in another process knowing its handle . </br>
+<b> `OpenProcess` </b> : get a handle for a process in memory knowing its PID . </br>
+<b> `VirtualAllocEx`</b> : Allocate memory in a process knowing its handle . </br>
+<b>` WriteProcessMemory` </b> : Write to a memory in a process knowing its handle . </br> 
+<b>` LoadLibraryW`</b> : load dll into a process (This is the function that our process need to execute ) . </br> 
+<b> `CreateRemoteThread`</b> : Create thread in another process knowing its handle . </br>
 
 # How it works ? 
 
